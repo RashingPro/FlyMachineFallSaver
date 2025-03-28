@@ -1,5 +1,5 @@
 # FlyMachineFallSaver
-Small client mod, automatic send configured chat command or leave from server when player has fellen from fly machine
+Small client mod, automatic send configured chat command or leave from server when player has fallen from fly machine
 
 ## Using
 Use chat command `/start`\
