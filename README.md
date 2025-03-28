@@ -7,3 +7,5 @@ After this, mod will save current Y coord and start checking player's Y coord. I
 
 To stop use `/stop`\
 To configure mod use command `/config leave` or `/config command "/some-cool-command"`
+> [!NOTE]
+> Configuration is global, doesn't matter which server or world you're currently playing on. It means if you use `/config command "/hello"` on server1 then mod will use `/hello` command even on server2 and in singleplayer
