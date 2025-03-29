@@ -4,10 +4,10 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+
 import dev.rashing.fmfs.config.ConfigManager;
+
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientCommandSource;
 import net.minecraft.text.Style;
@@ -15,9 +15,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
 import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
 
-public class CommandConfig implements Command<ClientCommandSource> {
+public class CommandConfig implements Command<FabricClientCommandSource> {
     @Override
     public int run(CommandContext context) throws CommandSyntaxException {
         ClientCommandSource source = (ClientCommandSource) context.getSource();
@@ -26,12 +25,7 @@ public class CommandConfig implements Command<ClientCommandSource> {
 
         String arg_action = StringArgumentType.getString(context, "action");
         if (!(Objects.equals(arg_action, "leave") || Objects.equals(arg_action, "command"))) {
-            Text message = Text.literal("Использование: ").setStyle(Style.EMPTY.withColor(Formatting.RED))
-                    .append(Text.literal("/config leave ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
-                    .append(Text.literal("или ").setStyle(Style.EMPTY.withColor(Formatting.RED)))
-                    .append(Text.literal("/config command ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
-                    .append(Text.literal("<command>").setStyle(Style.EMPTY.withColor(Formatting.YELLOW)));
-            client.player.sendMessage(message, false);
+            client.player.sendMessage(getUsageHelp(), false);
             return 1;
         }
 
@@ -42,12 +36,7 @@ public class CommandConfig implements Command<ClientCommandSource> {
             arg_command = "";
         }
         if (Objects.equals(arg_action, "command") && Objects.equals(arg_command, "")) {
-            Text message = Text.literal("Использование: ").setStyle(Style.EMPTY.withColor(Formatting.RED))
-                    .append(Text.literal("/config leave ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
-                    .append(Text.literal("или ").setStyle(Style.EMPTY.withColor(Formatting.RED)))
-                    .append(Text.literal("/config command ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
-                    .append(Text.literal("<command>").setStyle(Style.EMPTY.withColor(Formatting.YELLOW)));
-            client.player.sendMessage(message, false);
+            client.player.sendMessage(getUsageHelp(), false);
             return 1;
         }
 
@@ -69,5 +58,13 @@ public class CommandConfig implements Command<ClientCommandSource> {
 
         return 1;
     }
-}
 
+    public static Text getUsageHelp() {
+        Text message = Text.literal("Использование: ").setStyle(Style.EMPTY.withColor(Formatting.RED))
+                .append(Text.literal("/config leave ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
+                .append(Text.literal("или ").setStyle(Style.EMPTY.withColor(Formatting.RED)))
+                .append(Text.literal("/config command ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
+                .append(Text.literal("<command>").setStyle(Style.EMPTY.withColor(Formatting.YELLOW)));
+        return message;
+    }
+}

@@ -13,7 +13,6 @@ public class ConfigManager {
     private static final File CONFIG_FILE = new File("config/fmfs.json");
     private static ConfigMain config;
 
-    // Загрузка конфигурации
     public static void loadConfig() {
         if (!CONFIG_FILE.getParentFile().exists()) {
             CONFIG_FILE.getParentFile().mkdirs();
@@ -30,20 +29,17 @@ public class ConfigManager {
         }
     }
 
-    // Создание дефолтного файла
     private static void createDefaultConfig() {
         config = new ConfigMain();
         saveConfig();
     }
 
-    // Сохранение конфигурации
     public static void saveConfig() {
         try (FileWriter writer = new FileWriter(CONFIG_FILE)) {
             GSON.toJson(config, writer);
         } catch (IOException ignored) {}
     }
 
-    // Получение конфигурации
     public static ConfigMain getConfig() {
         return config;
     }
