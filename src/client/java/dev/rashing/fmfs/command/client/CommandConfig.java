@@ -5,7 +5,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-import dev.rashing.fmfs.config.ConfigManager;
+import dev.rashing.fmfs.config.client.ConfigManager;
 
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
@@ -61,9 +61,9 @@ public class CommandConfig implements Command<FabricClientCommandSource> {
 
     public static Text getUsageHelp() {
         Text message = Text.literal("Использование: ").setStyle(Style.EMPTY.withColor(Formatting.RED))
-                .append(Text.literal("/config leave ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
+                .append(Text.literal("/f_config leave ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
                 .append(Text.literal("или ").setStyle(Style.EMPTY.withColor(Formatting.RED)))
-                .append(Text.literal("/config command ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
+                .append(Text.literal("/f_config command ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
                 .append(Text.literal("<command>").setStyle(Style.EMPTY.withColor(Formatting.YELLOW)));
         return message;
     }

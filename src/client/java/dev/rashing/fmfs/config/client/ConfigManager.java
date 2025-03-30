@@ -1,4 +1,4 @@
-package dev.rashing.fmfs.config;
+package dev.rashing.fmfs.config.client;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

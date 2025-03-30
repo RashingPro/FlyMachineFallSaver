@@ -9,13 +9,10 @@ import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 
 import java.util.concurrent.CompletableFuture;
 
-public class CommandConfigActionSuggestionProvider implements SuggestionProvider<FabricClientCommandSource> {
-
+public class CommandDebugValueSuggestionProvider implements SuggestionProvider<FabricClientCommandSource> {
     @Override
-    public CompletableFuture<Suggestions> getSuggestions(CommandContext<FabricClientCommandSource> commandContext, SuggestionsBuilder builder) throws CommandSyntaxException {
-        builder.suggest("leave");
-        builder.suggest("command");
-
-        return builder.buildFuture();
+    public CompletableFuture<Suggestions> getSuggestions(CommandContext<FabricClientCommandSource> commandContext, SuggestionsBuilder suggestionsBuilder) throws CommandSyntaxException {
+        suggestionsBuilder.suggest("savedY");
+        return suggestionsBuilder.buildFuture();
     }
 }

@@ -16,7 +16,7 @@ public class CommandStart implements Command<FabricClientCommandSource> {
     public int run(CommandContext<FabricClientCommandSource> commandContext) throws CommandSyntaxException {
         MinecraftClient client = MinecraftClient.getInstance();
         assert client.player != null;
-        if (FlyMachineFallSaverClient.savedY == null) {
+        if (FlyMachineFallSaverClient.savedY != null) {
             Text message = Text.literal("Ошибка: ").setStyle(Style.EMPTY.withColor(Formatting.RED))
                     .append(Text.literal("полет уже начат. ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
                     .append(Text.literal("Используйте ").setStyle(Style.EMPTY.withColor(Formatting.RED)))
@@ -26,15 +26,17 @@ public class CommandStart implements Command<FabricClientCommandSource> {
         }
         int playerY = (int) client.player.getY();
         FlyMachineFallSaverClient.savedY = playerY;
+
         Text message = Text.literal("Начат полет на высоте: ").setStyle(Style.EMPTY.withColor(Formatting.RED))
                 .append(Text.literal("%s".formatted(playerY)).setStyle(Style.EMPTY.withColor(Formatting.GOLD)));
-        client.player.sendMessage(message, true);
+//        client.player.sendMessage(message, true);
+        client.inGameHud.setOverlayMessage(message, false);
         return 1;
     }
 
     public static Text getUsageHelp() {
         Text message = Text.literal("Использование: ").setStyle(Style.EMPTY.withColor(Formatting.RED))
-                .append(Text.literal("/start").setStyle(Style.EMPTY.withColor(Formatting.GOLD)));
+                .append(Text.literal("/f_start").setStyle(Style.EMPTY.withColor(Formatting.GOLD)));
         return message;
     }
 }
