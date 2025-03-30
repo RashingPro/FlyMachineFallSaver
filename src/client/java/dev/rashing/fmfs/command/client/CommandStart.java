@@ -25,7 +25,7 @@ public class CommandStart implements Command<FabricClientCommandSource> {
                     .append(Text.translatable("fmfs.message.error_use")
                             .append(" ")
                             .formatted(Formatting.RED))
-                    .append(Text.literal("/stop").formatted(Formatting.GOLD));
+                    .append(Text.literal("/f_stop").formatted(Formatting.GOLD));
             client.player.sendMessage(message, true);
             return 1;
         }

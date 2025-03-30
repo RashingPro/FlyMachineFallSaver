@@ -3,7 +3,7 @@
 	"id": "fmfs",
 	"version": "${version}",
 	"name": "FlyMachineFallSaver",
-	"description": "Мод для предотвращения падений с флаймашинки",
+	"description": "This client mod will help you to not fall off fly machine to void.",
 	"authors": [
 		"Rashing"
 	],
