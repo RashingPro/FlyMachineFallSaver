@@ -8,9 +8,7 @@ import net.minecraft.client.gui.screen.DisconnectedScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableTextContent;
 import net.minecraft.util.Formatting;
 
 public class EventTick implements ClientTickEvents.EndTick {
@@ -40,7 +38,7 @@ public class EventTick implements ClientTickEvents.EndTick {
                         Screen screen = new DisconnectedScreen(
                                 new SelectWorldScreen(null),
                                 Text.literal(""),
-                                Text.literal("Вы упали с флаймашинки!").formatted(Formatting.RED),
+                                Text.translatable("fmfs.messages.fly_fall").formatted(Formatting.RED),
                                 Text.translatable("gui.back")
                         );
                         client.disconnect();
@@ -50,7 +48,7 @@ public class EventTick implements ClientTickEvents.EndTick {
                         Screen screen = new DisconnectedScreen(
                                 new MultiplayerScreen(null),
                                 Text.literal(""),
-                                Text.literal("Вы упали с флаймашинки!").formatted(Formatting.RED)
+                                Text.translatable("fmfs.messages.fly_fall").formatted(Formatting.RED)
                         );
                         client.disconnect(screen);
                     }

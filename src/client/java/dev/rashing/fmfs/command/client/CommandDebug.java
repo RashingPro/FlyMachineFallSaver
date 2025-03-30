@@ -7,7 +7,6 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.rashing.fmfs.FlyMachineFallSaverClient;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
@@ -22,7 +21,7 @@ public class CommandDebug implements Command<FabricClientCommandSource> {
         assert client.player != null;
         String value = StringArgumentType.getString(commandContext, "value");
         assert value != null;
-        Text message = Text.literal("Значение ").formatted(Formatting.RED)
+        Text message = Text.literal("Value ").formatted(Formatting.RED)
                 .append(Text.literal(value + " ").formatted(Formatting.GOLD))
                 .append(Text.literal("= ").formatted(Formatting.RED));
         switch (value) {
@@ -35,7 +34,7 @@ public class CommandDebug implements Command<FabricClientCommandSource> {
                 );
             }
             default -> {
-                message = Text.literal("Неизвестное значение: ").formatted(Formatting.RED)
+                message = Text.literal("Unknown value: ").formatted(Formatting.RED)
                         .append(Text.literal(value).formatted(Formatting.GOLD));
             }
         }

@@ -7,7 +7,6 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.rashing.fmfs.FlyMachineFallSaverClient;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
@@ -17,9 +16,15 @@ public class CommandStart implements Command<FabricClientCommandSource> {
         MinecraftClient client = MinecraftClient.getInstance();
         assert client.player != null;
         if (FlyMachineFallSaverClient.savedY != null) {
-            Text message = Text.literal("Ошибка: ").formatted(Formatting.RED)
-                    .append(Text.literal("полет уже начат. ").formatted(Formatting.GOLD))
-                    .append(Text.literal("Используйте ").formatted(Formatting.RED))
+            Text message = Text.translatable("fmfs.message.error")
+                        .append(": ")
+                        .formatted(Formatting.RED)
+                    .append(Text.translatable("fmfs.error.fly_already_started")
+                            .append(". ")
+                            .formatted(Formatting.GOLD))
+                    .append(Text.translatable("fmfs.message.error_use")
+                            .append(" ")
+                            .formatted(Formatting.RED))
                     .append(Text.literal("/stop").formatted(Formatting.GOLD));
             client.player.sendMessage(message, true);
             return 1;
@@ -27,7 +32,9 @@ public class CommandStart implements Command<FabricClientCommandSource> {
         int playerY = (int) client.player.getY();
         FlyMachineFallSaverClient.savedY = playerY;
 
-        Text message = Text.literal("Начат полет на высоте: ").formatted(Formatting.RED)
+        Text message = Text.translatable("fmfs.messages.fly_start")
+                    .append(": ")
+                    .formatted(Formatting.RED)
                 .append(Text.literal("%s".formatted(playerY)).formatted(Formatting.GOLD));
 //        client.player.sendMessage(message, true);
         client.inGameHud.setOverlayMessage(message, false);
@@ -35,7 +42,9 @@ public class CommandStart implements Command<FabricClientCommandSource> {
     }
 
     public static Text getUsageHelp() {
-        Text message = Text.literal("Использование: ").formatted(Formatting.RED)
+        Text message = Text.translatable("fmfs.messages.command_using")
+                    .append(": ")
+                    .formatted(Formatting.RED)
                 .append(Text.literal("/f_start").formatted(Formatting.GOLD));
         return message;
     }

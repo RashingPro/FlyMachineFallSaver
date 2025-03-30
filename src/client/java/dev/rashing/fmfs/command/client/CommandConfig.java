@@ -9,8 +9,6 @@ import dev.rashing.fmfs.config.client.ConfigManager;
 
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientCommandSource;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
@@ -57,7 +55,7 @@ public class CommandConfig implements Command<FabricClientCommandSource> {
                             .append(Text.translatable("fmfs.settings.on_fall_command"))
                             .append(": ")
                             .formatted(Formatting.GOLD))
-                    .append(Text.literal(arg_command).formatted(Formatting.YELLOW));
+                    .append(Text.literal("/" + arg_command).formatted(Formatting.YELLOW));
         }
         client.player.sendMessage(message, false);
 
@@ -65,9 +63,11 @@ public class CommandConfig implements Command<FabricClientCommandSource> {
     }
 
     public static Text getUsageHelp() {
-        Text message = Text.literal("Использование: ").formatted(Formatting.RED)
+        Text message = Text.translatable("fmfs.messages.command_using")
+                    .append(": ")
+                    .formatted(Formatting.RED)
                 .append(Text.literal("/f_config leave ").formatted(Formatting.GOLD))
-                .append(Text.literal("или ").formatted(Formatting.RED))
+                .append(Text.translatable("fmfs.messages.or").append(" ").formatted(Formatting.RED))
                 .append(Text.literal("/f_config command ").formatted(Formatting.GOLD))
                 .append(Text.literal("<command>").formatted(Formatting.YELLOW));
         return message;

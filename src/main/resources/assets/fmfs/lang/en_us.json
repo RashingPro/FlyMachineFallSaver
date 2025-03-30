@@ -1,7 +1,14 @@
 {
-  "fmfs.messages.settings_updated": "Settings updated ",
-  "fmfs.settings.on_fall_action": "Action on fall",
-  "fmfs.settings.action_leave": "leave server",
+  "fmfs.error.fly_already_started": "Fly already started",
+  "fmfs.message.error": "Error",
+  "fmfs.message.error_use": "Use",
+  "fmfs.messages.command_using": "Using",
+  "fmfs.messages.fly_fall": "You have fallen from fly machine!",
+  "fmfs.messages.fly_start": "Started fly on level",
+  "fmfs.messages.or": "or",
+  "fmfs.messages.settings_updated": "Settings updated",
   "fmfs.settings.action_command": "chat command",
+  "fmfs.settings.action_leave": "leave server",
+  "fmfs.settings.on_fall_action": "Action on fall",
   "fmfs.settings.on_fall_command": "Command on fall"
 }
