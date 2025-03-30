@@ -1,0 +1,7 @@
+{
+  "fmfs.messages.settings_updated": "Settings updated ",
+  "fmfs.settings.on_fall_action": "Action on fall",
+  "fmfs.settings.action_leave": "leave server",
+  "fmfs.settings.action_command": "chat command",
+  "fmfs.settings.on_fall_command": "Command on fall"
+}

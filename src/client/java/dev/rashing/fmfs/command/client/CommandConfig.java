@@ -19,7 +19,6 @@ import java.util.Objects;
 public class CommandConfig implements Command<FabricClientCommandSource> {
     @Override
     public int run(CommandContext context) throws CommandSyntaxException {
-        ClientCommandSource source = (ClientCommandSource) context.getSource();
         MinecraftClient client = MinecraftClient.getInstance();
         assert client.player != null;
 
@@ -44,14 +43,20 @@ public class CommandConfig implements Command<FabricClientCommandSource> {
         ConfigManager.getConfig().command = arg_command;
         ConfigManager.saveConfig();
 
-        Text message = Text.literal("Обновлены настройки:").formatted(Formatting.RED)
-                .append(Text.literal("\n  – Действие при падении: ").formatted(Formatting.GOLD))
-                .append(Text.literal(
-                        Objects.equals(arg_action, "leave") ? "выход с сервера" : "выполнение команды")
+        Text message = Text.translatable("fmfs.messages.settings_updated").append(": ").formatted(Formatting.RED)
+                .append(Text.literal("\n  – ")
+                        .append(Text.translatable("fmfs.settings.on_fall_action"))
+                        .append(": ")
+                        .formatted(Formatting.GOLD))
+                .append(Text.translatable(
+                        Objects.equals(arg_action, "leave") ? "fmfs.settings.action_leave" : "fmfs.settings.action_command")
                         .formatted(Formatting.YELLOW));
         if (Objects.equals(arg_action, "command")) {
             message = message.copy()
-                    .append(Text.literal("\n  – Команда при падении: ").formatted(Formatting.GOLD))
+                    .append(Text.literal("\n  – ")
+                            .append(Text.translatable("fmfs.settings.on_fall_command"))
+                            .append(": ")
+                            .formatted(Formatting.GOLD))
                     .append(Text.literal(arg_command).formatted(Formatting.YELLOW));
         }
         client.player.sendMessage(message, false);

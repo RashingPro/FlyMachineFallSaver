@@ -1,0 +1,7 @@
+{
+  "fmfs.messages.settings_updated": "Настройки обновлены",
+  "fmfs.settings.on_fall_action": "Действие при падении",
+  "fmfs.settings.action_leave": "выход с сервера",
+  "fmfs.settings.action_command": "выполнение команды",
+  "fmfs.settings.on_fall_command": "Команда при падении"
+}
