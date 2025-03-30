@@ -23,7 +23,6 @@ loom {
 
 	mods {
 		"fmfs" {
-			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
 	}

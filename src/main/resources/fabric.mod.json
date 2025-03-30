@@ -3,21 +3,18 @@
 	"id": "fmfs",
 	"version": "${version}",
 	"name": "FlyMachineFallSaver",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Мод для предотвращения падений с флаймашинки",
 	"authors": [
-		"Me!"
+		"Rashing"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/RashingPro/FlyMachineFallSaver/",
+		"sources": "https://github.com/RashingPro/FlyMachineFallSaver/"
 	},
-	"license": "CC0-1.0",
+	"license": "GPL-3.0",
 	"icon": "assets/fmfs/icon.png",
 	"environment": "client",
 	"entrypoints": {
-		"main": [
-			"dev.rashing.fmfs.FlyMachineFallSaver"
-		],
 		"client": [
 			"dev.rashing.fmfs.FlyMachineFallSaverClient"
 		]
@@ -27,8 +24,5 @@
 		"minecraft": "~1.21.3",
 		"java": ">=21",
 		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }

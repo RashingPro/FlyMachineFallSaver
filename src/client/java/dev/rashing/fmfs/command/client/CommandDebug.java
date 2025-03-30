@@ -22,21 +22,21 @@ public class CommandDebug implements Command<FabricClientCommandSource> {
         assert client.player != null;
         String value = StringArgumentType.getString(commandContext, "value");
         assert value != null;
-        Text message = Text.literal("Значение ").setStyle(Style.EMPTY.withColor(Formatting.RED))
-                .append(Text.literal(value + " ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
-                .append(Text.literal("= ").setStyle(Style.EMPTY.withColor(Formatting.RED)));
+        Text message = Text.literal("Значение ").formatted(Formatting.RED)
+                .append(Text.literal(value + " ").formatted(Formatting.GOLD))
+                .append(Text.literal("= ").formatted(Formatting.RED));
         switch (value) {
             case "savedY" -> {
                 if (FlyMachineFallSaverClient.savedY != null) message = message.copy().append(
-                        Text.literal(FlyMachineFallSaverClient.savedY.toString()).setStyle(Style.EMPTY.withColor(Formatting.GOLD))
+                        Text.literal(FlyMachineFallSaverClient.savedY.toString()).formatted(Formatting.GOLD)
                 );
                 else message = message.copy().append(
-                        Text.literal("null").setStyle(Style.EMPTY.withColor(Formatting.GOLD))
+                        Text.literal("null").formatted(Formatting.GOLD)
                 );
             }
             default -> {
-                message = Text.literal("Неизвестное значение: ").setStyle(Style.EMPTY.withColor(Formatting.RED))
-                        .append(Text.literal(value).setStyle(Style.EMPTY.withColor(Formatting.GOLD)));
+                message = Text.literal("Неизвестное значение: ").formatted(Formatting.RED)
+                        .append(Text.literal(value).formatted(Formatting.GOLD));
             }
         }
         client.player.sendMessage(message, false);

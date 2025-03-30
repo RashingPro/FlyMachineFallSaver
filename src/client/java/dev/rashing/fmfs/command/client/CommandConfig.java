@@ -44,15 +44,15 @@ public class CommandConfig implements Command<FabricClientCommandSource> {
         ConfigManager.getConfig().command = arg_command;
         ConfigManager.saveConfig();
 
-        Text message = Text.literal("Обновлены настройки:").setStyle(Style.EMPTY.withColor(Formatting.RED))
-                .append(Text.literal("\n  – Действие при падении: ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
+        Text message = Text.literal("Обновлены настройки:").formatted(Formatting.RED)
+                .append(Text.literal("\n  – Действие при падении: ").formatted(Formatting.GOLD))
                 .append(Text.literal(
                         Objects.equals(arg_action, "leave") ? "выход с сервера" : "выполнение команды")
-                        .setStyle(Style.EMPTY.withColor(Formatting.YELLOW)));
+                        .formatted(Formatting.YELLOW));
         if (Objects.equals(arg_action, "command")) {
             message = message.copy()
-                    .append(Text.literal("\n  – Команда при падении: ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
-                    .append(Text.literal(arg_command).setStyle(Style.EMPTY.withColor(Formatting.YELLOW)));
+                    .append(Text.literal("\n  – Команда при падении: ").formatted(Formatting.GOLD))
+                    .append(Text.literal(arg_command).formatted(Formatting.YELLOW));
         }
         client.player.sendMessage(message, false);
 
@@ -60,11 +60,11 @@ public class CommandConfig implements Command<FabricClientCommandSource> {
     }
 
     public static Text getUsageHelp() {
-        Text message = Text.literal("Использование: ").setStyle(Style.EMPTY.withColor(Formatting.RED))
-                .append(Text.literal("/f_config leave ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
-                .append(Text.literal("или ").setStyle(Style.EMPTY.withColor(Formatting.RED)))
-                .append(Text.literal("/f_config command ").setStyle(Style.EMPTY.withColor(Formatting.GOLD)))
-                .append(Text.literal("<command>").setStyle(Style.EMPTY.withColor(Formatting.YELLOW)));
+        Text message = Text.literal("Использование: ").formatted(Formatting.RED)
+                .append(Text.literal("/f_config leave ").formatted(Formatting.GOLD))
+                .append(Text.literal("или ").formatted(Formatting.RED))
+                .append(Text.literal("/f_config command ").formatted(Formatting.GOLD))
+                .append(Text.literal("<command>").formatted(Formatting.YELLOW));
         return message;
     }
 }
