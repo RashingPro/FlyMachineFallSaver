@@ -41,10 +41,10 @@ public class FlyMachineFallSaverClient implements ClientModInitializer {
                             commandContext.getSource().sendFeedback(CommandConfig.getUsageHelp());
                             return 1;
                         })
-                ));
+                )); // f_config
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
                 dispatcher.register(ClientCommandManager.literal("f_start")
-                        .executes(new CommandStart())));
+                        .executes(new CommandStart()))); // f_start
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
                 dispatcher.register(ClientCommandManager.literal("f_debug")
                         .then(ClientCommandManager.argument("value", StringArgumentType.word())
@@ -52,11 +52,13 @@ public class FlyMachineFallSaverClient implements ClientModInitializer {
                                 .executes(CommandDebug::runWithValue)
                         )
                         .executes(new CommandDebug())
-                ));
+                )); // f_debug
+        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) ->
+                dispatcher.register(ClientCommandManager.literal("f_stop")
+                        .executes(new CommandStop())
+                )); // f_stop
 
         // events registration
         ClientTickEvents.END_CLIENT_TICK.register(new EventTick());
-//        ClientLifecycleEvents.CLIENT_STOPPING.register(client -> savedY = null);
-//        ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> savedY = null);
     }
 }

@@ -38,7 +38,7 @@ public class EventTick implements ClientTickEvents.EndTick {
                         Screen screen = new DisconnectedScreen(
                                 new SelectWorldScreen(null),
                                 Text.literal(""),
-                                Text.translatable("fmfs.messages.fly_fall").formatted(Formatting.RED),
+                                Text.translatable("fmfs.message.fly_fall").formatted(Formatting.RED),
                                 Text.translatable("gui.back")
                         );
                         client.disconnect();
@@ -48,7 +48,7 @@ public class EventTick implements ClientTickEvents.EndTick {
                         Screen screen = new DisconnectedScreen(
                                 new MultiplayerScreen(null),
                                 Text.literal(""),
-                                Text.translatable("fmfs.messages.fly_fall").formatted(Formatting.RED)
+                                Text.translatable("fmfs.message.fly_fall").formatted(Formatting.RED)
                         );
                         client.disconnect(screen);
                     }

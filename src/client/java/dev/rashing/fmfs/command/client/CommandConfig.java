@@ -41,7 +41,7 @@ public class CommandConfig implements Command<FabricClientCommandSource> {
         ConfigManager.getConfig().command = arg_command;
         ConfigManager.saveConfig();
 
-        Text message = Text.translatable("fmfs.messages.settings_updated").append(": ").formatted(Formatting.RED)
+        Text message = Text.translatable("fmfs.message.settings_updated").append(": ").formatted(Formatting.RED)
                 .append(Text.literal("\n  – ")
                         .append(Text.translatable("fmfs.settings.on_fall_action"))
                         .append(": ")
@@ -63,11 +63,11 @@ public class CommandConfig implements Command<FabricClientCommandSource> {
     }
 
     public static Text getUsageHelp() {
-        Text message = Text.translatable("fmfs.messages.command_using")
+        Text message = Text.translatable("fmfs.message.command_using")
                     .append(": ")
                     .formatted(Formatting.RED)
                 .append(Text.literal("/f_config leave ").formatted(Formatting.GOLD))
-                .append(Text.translatable("fmfs.messages.or").append(" ").formatted(Formatting.RED))
+                .append(Text.translatable("fmfs.message.or").append(" ").formatted(Formatting.RED))
                 .append(Text.literal("/f_config command ").formatted(Formatting.GOLD))
                 .append(Text.literal("<command>").formatted(Formatting.YELLOW));
         return message;

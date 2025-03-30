@@ -32,17 +32,17 @@ public class CommandStart implements Command<FabricClientCommandSource> {
         int playerY = (int) client.player.getY();
         FlyMachineFallSaverClient.savedY = playerY;
 
-        Text message = Text.translatable("fmfs.messages.fly_start")
+        Text message = Text.translatable("fmfs.message.fly_start")
                     .append(": ")
                     .formatted(Formatting.RED)
                 .append(Text.literal("%s".formatted(playerY)).formatted(Formatting.GOLD));
-//        client.player.sendMessage(message, true);
-        client.inGameHud.setOverlayMessage(message, false);
+        client.player.sendMessage(message, true);
+//        client.inGameHud.setOverlayMessage(message, false);
         return 1;
     }
 
     public static Text getUsageHelp() {
-        Text message = Text.translatable("fmfs.messages.command_using")
+        Text message = Text.translatable("fmfs.message.command_using")
                     .append(": ")
                     .formatted(Formatting.RED)
                 .append(Text.literal("/f_start").formatted(Formatting.GOLD));
