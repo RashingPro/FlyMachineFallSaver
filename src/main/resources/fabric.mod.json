@@ -9,7 +9,8 @@
 	],
 	"contact": {
 		"homepage": "https://github.com/RashingPro/FlyMachineFallSaver/",
-		"sources": "https://github.com/RashingPro/FlyMachineFallSaver/"
+		"sources": "https://github.com/RashingPro/FlyMachineFallSaver/",
+		"issues": "https://github.com/RashingPro/FlyMachineFallSaver/issues"
 	},
 	"license": "GPL-3.0",
 	"icon": "assets/fmfs/icon.png",
