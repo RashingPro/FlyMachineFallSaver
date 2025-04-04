@@ -32,6 +32,8 @@ public class CommandStart implements Command<FabricClientCommandSource> {
         int playerY = (int) client.player.getY();
         FlyMachineFallSaverClient.savedY = playerY;
 
+        FlyMachineFallSaverClient.LOGGER.info("Begin fly on level %s".formatted(playerY));
+
         Text message = Text.translatable("fmfs.message.fly_start")
                     .append(": ")
                     .formatted(Formatting.RED)

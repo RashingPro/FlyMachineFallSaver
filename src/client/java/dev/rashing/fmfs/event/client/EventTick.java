@@ -27,6 +27,10 @@ public class EventTick implements ClientTickEvents.EndTick {
 
         int playerY = (int) client.player.getY();
         if (playerY < FlyMachineFallSaverClient.savedY) {
+            FlyMachineFallSaverClient.LOGGER.info("Player Y %s less than saved %s".formatted(
+                    playerY,
+                    FlyMachineFallSaverClient.savedY
+            ));
             FlyMachineFallSaverClient.savedY = null;
             String action_type = ConfigManager.getConfig().action_type;
             switch (action_type) {
